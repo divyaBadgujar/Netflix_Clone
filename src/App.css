@@ -1,38 +1,365 @@
-.App {
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: rgb(35, 34, 50);
+  color: #fff
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.navbar .logo h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-links li {
+  margin: 0 10px;
+}
+
+.navbar .nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.search-form input[type="text"] {
+  padding: 5px;
+  border-radius: 3px;
+  border: none;
+}
+
+.search-form button {
+  padding: 5px 10px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 3px;
+  background-color: #ff4500;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-form button:hover {
+  background-color: #e03e00;
+}
+
+/* Movies Container for Home, Top Rated, Upcoming & Search Results */
+.movies-container {
+  padding: 20px;
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* MovieCard Styles */
+.movie-card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.movie-card:hover {
+  transform: scale(1.05);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.movie-card img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.movie-card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  padding: 0 10px;
+}
+
+.movie-card p {
+  margin: 0 0 10px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Pagination Styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  margin: 0 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pagination button:hover {
+  background-color: #555;
+}
+
+.pagination button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 16px;
+}
+
+/* Movie Detail Container */
+.movie-detail-container {
+  position: relative;
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #000220;;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Top Section: Usual Layout */
+.top-section {
+  display: flex;
+  gap: 20px;
+  z-index: 1; /* Ensure content stays above additional poster */
+}
+
+.left-column {
+  flex: 0 0 auto;
+}
+
+.left-column img {
+  width: 130px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.right-column {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.right-column h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #fff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.movie-rating {
+  color: rgb(108, 108, 211);
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.movie-timing {
+  display: inline-block;
+  border: 1px solid #555;
+  width: 55px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.movie-release-date {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Combined Timing and Genres Container */
+.timing-genres {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin: 8px 0;
+}
+
+/* Movie Timing remains unchanged */
+.movie-timing {
+  display: inline-block;
+}
+
+.duration-box {
+  display: inline-block;
+  border: 1px solid #555;
+  width: 55px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+/* Movie Genres styling */
+.movie-genres {
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Overview Section */
+.overview-section {
+  /* Limit the width to half of the container */
+  width: 40%;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.overview-section h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.overview-section p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ccc;
+  
+}
+
+/* Additional Poster: Positioned on the right, covering half container */
+.additional-poster {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 0; /* Behind the normal content */
+  overflow: hidden;
+}
+
+.additional-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5; /* Optional: adjust opacity to avoid overpowering content */
+}
+
+/* Separate Cast Container */
+.cast-container {
+  max-width: 1500px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgb(35, 34, 50);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.cast-container h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.cast-list {
+  display: flex;
+  gap: 35px;
+  overflow-x: auto;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.cast-card {
+  text-align: center;
+  width: 170px;
+}
+
+.cast-card img {
+  width: 200px;
+  height: 250px;
+  border-radius: 8px;
+}
+
+.cast-card p {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .top-section {
+    flex-direction: column;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .additional-poster {
+    display: none; /* Hide extra poster on small screens */
   }
 }
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .nav-links li {
+    margin: 5px 0;
+  }
+
+  .movie-list {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .movie-detail-container {
+    margin: 10px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-form input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .actor-card {
+    width: 80px;
+  }
+}
+
